@@ -37,9 +37,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "core",
-    "bootstrap5",
+
+    # Bibliotecas de terceiros
+    "bootstrap4",
     "stdimage",
+
+    # Suas aplicações
+    "core",
 ]
 
 MIDDLEWARE = [
@@ -80,7 +84,7 @@ WSGI_APPLICATION = "project_3_geek.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": BASE_DIR / "db.mysql",
+        "NAME": "django3",
         "USER": "muniz",
         "PASSWORD": "32239292",
         "HOST": "localhost",
