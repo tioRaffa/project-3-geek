@@ -2,7 +2,6 @@ asgiref==3.8.1
 beautifulsoup4==4.13.3
 Django==5.1.6
 django-bootstrap4==24.4
-django-stdimage==6.0.2
 gunicorn==23.0.0
 mysql==0.0.3
 mysqlclient==2.2.7
