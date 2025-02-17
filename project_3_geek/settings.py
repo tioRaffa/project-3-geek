@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # Bibliotecas de terceiros
     "bootstrap4",
+    "bootstrap5",
 
 
     # Suas aplicações

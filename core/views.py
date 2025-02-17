@@ -30,3 +30,7 @@ def contact(request):
 
 def prodruct(request):
     return render(request, 'pages/product.html')
+
+
+def login(request):
+    return render(request, 'pages/login.html')
