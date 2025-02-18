@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import ContactForms, ProdutoModelForm
 from django.contrib import messages
 from .models import Produto
@@ -37,27 +37,31 @@ def contact(request):
 
 
 def prodruct(request):
-    if str(request.method) == 'POST':
-        form = ProdutoModelForm(request.POST, request.FILES)
+    if str(request.user) != 'AnonymousUser':
+        if str(request.method) == 'POST':
+            form = ProdutoModelForm(request.POST, request.FILES)
 
-        if form.is_valid():
-            form.save()
+            if form.is_valid():
+                form.save()
 
-            messages.success(request, 'Produto Salvo Com Sucesso!')
-            form = ProdutoModelForm()  # limpa o formulario
+                messages.success(request, 'Produto Salvo Com Sucesso!')
+                form = ProdutoModelForm()  # limpa o formulario
+
+            else:
+                messages.error(
+                    request, 'ERRO!!! Nao Foi Possivel Salvar o Produto.')
 
         else:
-            messages.error(
-                request, 'ERRO!!! Nao Foi Possivel Salvar o Produto.')
+            form = ProdutoModelForm()
+
+        context = {
+            'form_vws': form,
+        }
+
+        return render(request, 'pages/product.html', context=context)
 
     else:
-        form = ProdutoModelForm()
-
-    context = {
-        'form_vws': form,
-    }
-
-    return render(request, 'pages/product.html', context=context)
+        return redirect('home')
 
 
 def login(request):
