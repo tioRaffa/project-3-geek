@@ -1,9 +1,27 @@
 {% extends "global/base.html" %}
+{% load bootstrap4 %}
+
+{% block links %}{% bootstrap_css %}{% endblock links %}
 
 {% block title %}Product{% endblock title %}
 
 {% block content %}
-
-    <h1>Produto</h1>
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <div style="background-color: rgb(147, 148, 148); margin: 30px; padding: 10px; width: 50%;">
+            <h1>Produto</h1>
+            
+            <form action="{% url 'produto' %}" method="post" autocomplete="off" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% bootstrap_form form_vws %}
+                {% bootstrap_messages %}
+                
+                {% buttons %}
+                <button type="submit" class="bt bt-primary">Cadastrar</button>
+                {% endbuttons %}
+                
+            </form>
+        </div>
+    </div>
+{% bootstrap_javascript jquery='full' %}
 
 {% endblock content %}

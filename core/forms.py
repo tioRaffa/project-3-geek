@@ -34,4 +34,4 @@ class ContactForms(forms.Form):
 class ProdutoModelForm(forms.ModelForm):
     class Meta:
         model = Produto
-        fields = ['name', 'price', 'stock', 'image']  # pode dar erro
+        fields = ['name', 'price', 'stock', 'image']

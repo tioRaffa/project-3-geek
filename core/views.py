@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import ContactForms
+from .forms import ContactForms, ProdutoModelForm
 from django.contrib import messages
 # Create your views here.
 
@@ -9,9 +9,10 @@ def index(request):
 
 
 def contact(request):
-    form = ContactForms(request.POST or None)
 
     if str(request.method) == 'POST':
+        form = ContactForms(request.POST or None)
+
         if form.is_valid():
             form.send_email()
 
@@ -29,7 +30,27 @@ def contact(request):
 
 
 def prodruct(request):
-    return render(request, 'pages/product.html')
+    if str(request.method) == 'POST':
+        form = ProdutoModelForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, 'Produto Salvo Com Sucesso!')
+            form = ProdutoModelForm()  # limpa o formulario
+
+        else:
+            messages.error(
+                request, 'ERRO!!! Nao Foi Possivel Salvar o Produto.')
+
+    else:
+        form = ProdutoModelForm()
+
+    context = {
+        'form_vws': form,
+    }
+
+    return render(request, 'pages/product.html', context=context)
 
 
 def login(request):
