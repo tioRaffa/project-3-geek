@@ -1,0 +1,15 @@
+<div class="card" style="width: 18rem; margin: 20px; border-radius: 5px; border: 2px solid rgb(0, 0, 0, 0.5);">
+    
+  <img class="card-img-top img-fluid" src="{{ produto.image.url }}" alt="Imagem de capa do card" style="border-radius: 4px; max-width: 300px; max-height: 200px;">
+
+    <div class="card-body">
+      <h5 class="card-title"> {{ produto.name }} </h5>
+    </div>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">R${{ produto.price }}</li>
+      <li class="list-group-item">Estoque / {{ produto.stock }}</li>
+    </ul>
+    
+    
+</div>

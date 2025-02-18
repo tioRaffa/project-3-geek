@@ -8,7 +8,7 @@
 {% block content %}
     <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
         <div style="background-color: rgb(147, 148, 148); margin: 30px; padding: 10px; width: 50%;">
-            <h1>Produto</h1>
+            <h1 style="text-align: center;">Cadastrar Produto</h1>
             
             <form action="{% url 'produto' %}" method="post" autocomplete="off" enctype="multipart/form-data">
                 {% csrf_token %}

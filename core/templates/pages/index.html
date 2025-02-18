@@ -1,12 +1,30 @@
 {% extends "global/base.html" %}
 
+
+{% block links %}
+    {% include "partials/head.html" %}
+{% endblock links %}
+
+
 {% block title %}HOME{% endblock title %}
+
 
 {% block content %}
 
-    <h1>Index</h1>
+
+<h1 style="text-align: center;">Produtos</h1>
+
+<div style="display: flex; flex-direction: row; margin: 10PX;">
+
+    {% for produto in produto %}
+        {% include "partials/cards.html" %}
+    {% endfor %}        
+    
+</div>
 
 
+
+{% include "partials/footer_cards.html" %}
 {% endblock content %}
 
 
